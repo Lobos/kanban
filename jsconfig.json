@@ -5,7 +5,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@": ["packages/dev_web/src/*"]
+      "@": [
+        "packages/dev_web/src/*",
+        "packages/web/src/*"
+      ]
     }
   }
 }
