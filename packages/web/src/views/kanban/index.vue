@@ -1,5 +1,10 @@
 <template>
-  <div class="kanban"></div>
+  <div class="kanban">
+    kanban
+    <div class="container">
+      root
+    </div>
+  </div>
 </template>
 
 <script>
@@ -14,7 +19,13 @@ export default {
 .kanban {
   flex: 1;
   width: 100%;
+  height: calc(100vh - 3rem);
   position: relative;
   overflow: auto;
+}
+
+.container {
+  transform: translate(50%, 50%);
+  height: 100vh;
 }
 </style>
