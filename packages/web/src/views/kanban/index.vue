@@ -1,16 +1,31 @@
 <template>
   <div class="kanban">
-    kanban
     <div class="container">
-      root
+      <Block :data="data" />
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import Block from './block.vue'
+
 export default {
+  components: {
+    Block,
+  },
   data() {
     return {}
+  },
+  computed: {
+    ...mapState('kanban', ['mapData', 'treeData']),
+    data() {
+      return {
+        id: '',
+        name: 'root',
+        children: this.treeData,
+      }
+    },
   },
 }
 </script>
@@ -25,7 +40,6 @@ export default {
 }
 
 .container {
-  transform: translate(50%, 50%);
   height: 100vh;
 }
 </style>
