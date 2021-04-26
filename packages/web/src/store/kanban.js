@@ -13,7 +13,8 @@ const state = () => {
     const sp = id.split('/')
     const node = {
       id,
-      name: sp.pop(),
+      text: sp.pop(),
+      size: sp.size,
       parent: sp.join('/'),
     }
     mapData[id] = node

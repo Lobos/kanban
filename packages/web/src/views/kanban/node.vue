@@ -1,12 +1,13 @@
 <template>
-  <div class="node" :class="{ [position]: true }">
+  <div ref="node" class="node" :class="{ [position]: true }">
     <div class="box">
       <div class="info" :class="[{ 'has-children': hasChildren }]">
-        {{ data.name }}
+        {{ data.text }}
       </div>
       <template v-if="hasChildren">
         <v-icon
           class="toggle-button"
+          size="15px"
           :name="isExpand ? 'remove-circle' : 'add-circle'"
           @click="toggle"
         />
@@ -19,28 +20,39 @@
 import { mapState } from 'vuex'
 
 export default {
+  inject: ['holdScroll'],
   props: {
     conf: Object,
     data: Object,
     hasChildren: Boolean,
     position: String,
   },
+
   computed: {
     ...mapState('kanban', ['expandKeys']),
     isExpand() {
       return this.expandKeys[this.data.id]
     },
   },
+
   methods: {
     toggle() {
+      const { node } = this.$refs
+      const rect = node.getBoundingClientRect()
       this.expandKeys[this.data.id] = !this.expandKeys[this.data.id]
+      this.$nextTick(() => {
+        this.holdScroll(node, {
+          x: rect.left + rect.width / 2,
+          y: rect.top + rect.height / 2,
+        })
+      })
     },
   },
 }
 </script>
 
 <style lang="scss" scoped>
-$border-color: #ccc;
+$border-color: #aaa;
 $line-width: 2rem;
 
 .node {
@@ -53,15 +65,15 @@ $line-width: 2rem;
 
 .box {
   position: sticky;
-  padding: 0.5rem $line-width;
+  padding: 4px $line-width;
   top: 0rem;
   bottom: 0rem;
 }
 
 .info {
   padding: 4px 8px;
-  border: solid 1px $border-color;
-  border-radius: 4px;
+  border-radius: 6px;
+  background: #fff;
 }
 
 .has-children {
@@ -130,6 +142,7 @@ $line-width: 2rem;
 .toggle-button {
   position: absolute;
   top: 50%;
+  margin-top: 1px;
   right: -1px;
   transform: translate(50%, -50%);
   background: #fff;
