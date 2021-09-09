@@ -2,13 +2,7 @@
   <div class="block">
     <Node :data="data" :conf="conf" :position="position" :has-children="hasChildren" />
     <div v-if="hasChildren && isExpand" class="list">
-      <Block
-        v-for="(d, i) in data.children"
-        :key="d.id"
-        :position="getPosition(i)"
-        :data="d"
-        :conf="conf"
-      />
+      <Block v-for="(d, i) in data.children" :key="d.id" :position="getPosition(i)" :data="d" :conf="conf" />
     </div>
   </div>
 </template>

@@ -1,8 +1,6 @@
 <template>
   <div class="header">
-    <div class="title">
-      KANBAN
-    </div>
+    <div class="title">KANBAN</div>
   </div>
   <router-view />
 </template>
