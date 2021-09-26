@@ -8,11 +8,7 @@
 
     <div class="ui-autocomplete__content">
       <label class="ui-autocomplete__label">
-        <div
-          v-if="label || $slots.default"
-          class="ui-autocomplete__label-text"
-          :class="labelClasses"
-        >
+        <div v-if="label || $slots.default" class="ui-autocomplete__label-text" :class="labelClasses">
           <slot>{{ label }}</slot>
         </div>
 
@@ -267,7 +263,7 @@ export default {
     },
 
     matchingSuggestions() {
-      const suggestions = this.suggestions.filter(suggestion => {
+      const suggestions = this.suggestions.filter((suggestion) => {
         if (this.filter) {
           return this.filter(suggestion, this.value, this.defaultFilter)
         }

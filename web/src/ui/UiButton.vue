@@ -50,9 +50,7 @@
       <slot name="dropdown"></slot>
     </ui-popover>
 
-    <ui-tooltip v-if="tooltip" :open-on="openTooltipOn" :position="tooltipPosition">{{
-      tooltip
-    }}</ui-tooltip>
+    <ui-tooltip v-if="tooltip" :open-on="openTooltipOn" :position="tooltipPosition">{{ tooltip }}</ui-tooltip>
   </component>
 </template>
 

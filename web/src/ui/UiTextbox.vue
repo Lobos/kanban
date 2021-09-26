@@ -318,10 +318,7 @@ export default {
     reset() {
       // Blur the input if it's focused to prevent required errors
       // when it's value is reset
-      if (
-        document.activeElement === this.$refs.input ||
-        document.activeElement === this.$refs.textarea
-      ) {
+      if (document.activeElement === this.$refs.input || document.activeElement === this.$refs.textarea) {
         document.activeElement.blur()
       }
 

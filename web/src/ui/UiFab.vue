@@ -10,9 +10,7 @@
 
     <ui-ripple-ink v-if="!disableRipple"></ui-ripple-ink>
 
-    <ui-tooltip v-if="tooltip" :open-on="openTooltipOn" :position="tooltipPosition">{{
-      tooltip
-    }}</ui-tooltip>
+    <ui-tooltip v-if="tooltip" :open-on="openTooltipOn" :position="tooltipPosition">{{ tooltip }}</ui-tooltip>
   </button>
 </template>
 

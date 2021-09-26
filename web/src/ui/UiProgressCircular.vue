@@ -1,10 +1,6 @@
 <template>
   <transition :name="disableTransition ? null : 'ui-progress-circular--transition-fade'">
-    <div
-      class="ui-progress-circular"
-      :class="classes"
-      :style="{ width: size + 'px', height: size + 'px' }"
-    >
+    <div class="ui-progress-circular" :class="classes" :style="{ width: size + 'px', height: size + 'px' }">
       <!-- Alternative circle rendering to explore: http://jsfiddle.net/6e3QJ/29/ -->
       <svg
         v-if="type === 'determinate'"
@@ -87,10 +83,7 @@ export default {
 
   computed: {
     classes() {
-      return [
-        `ui-progress-circular--color-${this.color}`,
-        `ui-progress-circular--type-${this.type}`,
-      ]
+      return [`ui-progress-circular--color-${this.color}`, `ui-progress-circular--type-${this.type}`]
     },
 
     strokeDashArray() {
@@ -162,8 +155,7 @@ $ui-progress-determinate-transition-duration: 0.3s !default;
 }
 
 .ui-progress-circular__indeterminate {
-  animation: ui-progress-circular-rotate $ui-progress-indeterminate-rotation-duration linear
-    infinite;
+  animation: ui-progress-circular-rotate $ui-progress-indeterminate-rotation-duration linear infinite;
   bottom: 0;
   height: 100%;
   left: 0;
@@ -191,8 +183,7 @@ $ui-progress-determinate-transition-duration: 0.3s !default;
   }
 
   .ui-progress-circular__indeterminate-path {
-    animation: ui-progress-circular-color $ui-progress-indeterminate-color-duration ease-in-out
-      infinite;
+    animation: ui-progress-circular-color $ui-progress-indeterminate-color-duration ease-in-out infinite;
   }
 }
 

@@ -1,24 +1,13 @@
 <template>
   <transition :name="toggleTransition" @after-enter="onEnter" @after-leave="onLeave">
-    <div
-      v-show="isOpen"
-      class="ui-modal ui-modal__mask"
-      :class="classes"
-      :role="role"
-      @click.self="onBackdropClick"
-    >
+    <div v-show="isOpen" class="ui-modal ui-modal__mask" :class="classes" :role="role" @click.self="onBackdropClick">
       <div
         class="ui-modal__wrapper"
         :class="{ 'has-dummy-scrollbar': preventShift }"
         :style="alignTopStyle"
         @click.self="onBackdropClick"
       >
-        <ui-focus-container
-          ref="focusContainer"
-          class="ui-modal__container"
-          tabindex="-1"
-          @keydown.stop.esc="onEsc"
-        >
+        <ui-focus-container ref="focusContainer" class="ui-modal__container" tabindex="-1" @keydown.stop.esc="onEsc">
           <div v-if="!removeHeader" class="ui-modal__header">
             <slot name="header">
               <h1 class="ui-modal__header-text">{{ title }}</h1>

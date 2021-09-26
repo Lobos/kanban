@@ -1,12 +1,6 @@
 <template>
   <div class="ui-select" :class="classes" :style="style">
-    <input
-      v-if="name"
-      class="ui-select__hidden-input"
-      type="hidden"
-      :name="name"
-      :value="submittedValue"
-    />
+    <input v-if="name" class="ui-select__hidden-input" type="hidden" :name="name" :value="submittedValue" />
 
     <div v-if="icon || $slots.icon" class="ui-select__icon-wrapper">
       <slot name="icon">
@@ -30,17 +24,10 @@
 
         <div class="ui-select__display">
           <div class="ui-select__display-value" :class="{ 'is-placeholder': !hasDisplayText }">
-            {{
-              hasDisplayText ? displayText : hasFloatingLabel && isLabelInline ? null : placeholder
-            }}
+            {{ hasDisplayText ? displayText : hasFloatingLabel && isLabelInline ? null : placeholder }}
           </div>
 
-          <ui-icon
-            v-show="showClearButton"
-            class="ui-select__dropdown-button"
-            title="Clear"
-            @click="setValue('')"
-          >
+          <ui-icon v-show="showClearButton" class="ui-select__dropdown-button" title="Clear" @click="setValue('')">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
               <path
                 d="M18.984 6.422L13.406 12l5.578 5.578-1.406 1.406L12 13.406l-5.578 5.578-1.406-1.406L10.594 12 5.016 6.422l1.406-1.406L12 10.594l5.578-5.578z"
@@ -257,17 +244,7 @@ export default {
     required: Boolean,
   },
 
-  emits: [
-    'dropdown-open',
-    'dropdown-close',
-    'input',
-    'change',
-    'focus',
-    'select',
-    'touch',
-    'query-change',
-    'blur',
-  ],
+  emits: ['dropdown-open', 'dropdown-close', 'input', 'change', 'focus', 'select', 'touch', 'query-change', 'blur'],
 
   data() {
     return {
@@ -338,7 +315,7 @@ export default {
         return this.options
       }
 
-      const options = this.options.filter(option => {
+      const options = this.options.filter((option) => {
         if (this.filter) {
           return this.filter(option, this.query, this.defaultFilter)
         }
@@ -354,13 +331,13 @@ export default {
     },
 
     displayText() {
-      const getText = value => {
+      const getText = (value) => {
         if (typeof value === 'object' && value[this.keys.label]) {
           return value[this.keys.label]
         }
 
         let text = value
-        this.options.forEach(o => {
+        this.options.forEach((o) => {
           // eslint-disable-next-line eqeqeq
           if (typeof o === 'object' && o.value == value) {
             text = o[this.keys.label]
@@ -371,7 +348,7 @@ export default {
 
       if (this.multiple) {
         if (this.value.length > 0) {
-          return this.value.map(value => getText(value)).join(this.multipleDelimiter)
+          return this.value.map((value) => getText(value)).join(this.multipleDelimiter)
         }
 
         return ''
@@ -400,7 +377,7 @@ export default {
       }
 
       if (Array.isArray(this.value)) {
-        return this.value.map(option => option[this.keys.value] || option).join(',')
+        return this.value.map((option) => option[this.keys.value] || option).join(',')
       }
 
       return this.value[this.keys.value] || this.value

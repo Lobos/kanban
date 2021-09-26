@@ -43,10 +43,7 @@ export default {
 
   computed: {
     classes() {
-      return [
-        `ui-autocomplete-suggestion--type-${this.type}`,
-        { 'is-highlighted': this.highlighted },
-      ]
+      return [`ui-autocomplete-suggestion--type-${this.type}`, { 'is-highlighted': this.highlighted }]
     },
 
     imageStyle() {
